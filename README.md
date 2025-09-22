@@ -2,6 +2,8 @@
 
 [Live Demo](https://arvplay.vercel.app/)
 
+URL: https://arvplay.vercel.app/
+
 ![Next.js](https://img.shields.io/badge/Next.js-15-blue?logo=nextdotjs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
