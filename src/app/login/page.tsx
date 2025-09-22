@@ -11,10 +11,10 @@ export default function Login() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     // Mock authentication
-    if (email === "demo@spotifyclone.com" && password === "password") {
+  if (email === "demo@arvplay.com" && password === "password") {
       router.push("/");
     } else {
-      setError("Invalid credentials. Try demo@spotifyclone.com / password");
+  setError("Invalid credentials. Try demo@arvplay.com / password");
     }
   }
 
@@ -40,7 +40,7 @@ export default function Login() {
         />
         {error && <div className="text-red-400 text-sm">{error}</div>}
         <button type="submit" className="bg-green-500 text-white py-2 rounded font-bold hover:bg-green-600">Login</button>
-        <div className="text-gray-400 text-xs mt-2">Use demo@spotifyclone.com / password</div>
+  <div className="text-gray-400 text-xs mt-2">Use demo@arvplay.com / password</div>
       </form>
     </div>
   );

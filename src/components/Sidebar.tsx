@@ -13,9 +13,9 @@ export default function Sidebar() {
     <aside className="bg-black text-gray-200 w-64 fixed top-0 left-0 h-screen p-6 flex flex-col gap-8 border-r border-gray-800 overflow-y-auto z-20">
       <div className="flex items-center gap-2 mb-8">
         <span className="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center text-black font-bold text-lg">
-          S
+          A
         </span>
-        <h2 className="text-2xl font-bold tracking-tight">Spotify</h2>
+  <h2 className="text-2xl font-bold tracking-tight">ArvPlay</h2>
       </div>
       <nav className="flex flex-col gap-2">
         {navItems.map((item) => (
@@ -30,7 +30,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="mt-auto pt-8 border-t border-gray-800">
-        <div className="text-xs text-gray-400">© 2025 Spotify Clone</div>
+  <div className="text-xs text-gray-400">© 2025 ArvPlay</div>
       </div>
     </aside>
   );
