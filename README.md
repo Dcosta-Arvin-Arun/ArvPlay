@@ -1,8 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ArvPlay 🎵
+
+[Live Demo](https://arvplay.vercel.app/)
+
+![Next.js](https://img.shields.io/badge/Next.js-15-blue?logo=nextdotjs)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
+![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)
+
+---
+
+## 🖼️ Home Page
+
+![ArvPlay Home](screenshots/home.png)
+
+---
+
+## About
+
+ArvPlay is a modern, open-source music player web app. Stream your favorite songs with a beautiful, responsive interface. Built with Next.js and TypeScript. The app is designed for simplicity, speed, and a great user experience.
+
+---
+
+## Features
+
+- Play, pause, and seek songs
+- Responsive UI for desktop and mobile
+- Song list and audio controls
+- Dismissible work-in-progress overlay for users
+- Built with Next.js 15, TypeScript, and Tailwind CSS
+
+---
+
+## 🚧 Work In Progress
+
+ArvPlay is currently under development. Features and design may change!
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Clone the repo and install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +63,21 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Add your `.mp3` files to the `public/music/` folder
+- Songs will appear in the app automatically
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deploy easily on [Vercel](https://vercel.com/) or any platform that supports Next.js.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Pull requests and feedback are welcome! Feel free to open issues for bugs or feature requests.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
