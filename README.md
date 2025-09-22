@@ -1,13 +1,13 @@
 # ArvPlay 🎵
 
-[Live Demo](https://arvplay.vercel.app/)
-
-URL: https://arvplay.vercel.app/
+[Live Demo](https://arvplay.vercel.app/) &nbsp; | &nbsp; `https://arvplay.vercel.app/`
 
 ![Next.js](https://img.shields.io/badge/Next.js-15-blue?logo=nextdotjs)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-blue?logo=tailwindcss)
 ![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)
+![Status](https://img.shields.io/badge/Status-WIP-yellow)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
 
@@ -19,7 +19,22 @@ URL: https://arvplay.vercel.app/
 
 ## About
 
-ArvPlay is a modern, open-source music player web app. Stream your favorite songs with a beautiful, responsive interface. Built with Next.js and TypeScript. The app is designed for simplicity, speed, and a great user experience.
+ArvPlay is a modern, open-source music player web app. Stream your favorite songs with a beautiful, responsive interface. Built with Next.js and TypeScript, ArvPlay is designed for simplicity, speed, and a great user experience.
+
+---
+
+## Motivation
+
+ArvPlay began as a hands-on project to learn Next.js and modern web development. The goal is to create a clean, minimal music player that feels fast and intuitive.
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript 5
+- **Styling:** Tailwind CSS 3
+- **Deployment:** Vercel
 
 ---
 
@@ -27,15 +42,25 @@ ArvPlay is a modern, open-source music player web app. Stream your favorite song
 
 - Play, pause, and seek songs
 - Responsive UI for desktop and mobile
-- Song list and audio controls
-- Dismissible work-in-progress overlay for users
-- Built with Next.js 15, TypeScript, and Tailwind CSS
+- Song list with audio controls
+- Dismissible “work-in-progress” overlay for users
 
 ---
 
-## 🚧 Work In Progress
+## Roadmap
 
-ArvPlay is currently under development. Features and design may change!
+- [x] Home page with functional player
+- [x] Song list with play/pause/seek
+- [ ] Library page (recently played)
+- [ ] Playlist creation and management
+- [ ] Search functionality
+- [ ] User authentication (NextAuth.js)
+
+---
+
+## Work In Progress
+
+ArvPlay is actively being developed. Features and design may change as new functionality is added.
 
 ---
 
@@ -52,34 +77,3 @@ pnpm install
 # or
 bun install
 ```
-
-Run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Usage
-
-- Add your `.mp3` files to the `public/music/` folder
-- Songs will appear in the app automatically
-
-## Deployment
-
-Deploy easily on [Vercel](https://vercel.com/) or any platform that supports Next.js.
-
-## Contributing
-
-Pull requests and feedback are welcome! Feel free to open issues for bugs or feature requests.
-
-## License
-
-MIT
