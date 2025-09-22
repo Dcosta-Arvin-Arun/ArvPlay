@@ -16,6 +16,7 @@ export default function AudioPlayerClient({ selectedSong }: { selectedSong?: Son
   const [songs, setSongs] = useState<Song[]>([]);
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -35,12 +36,12 @@ export default function AudioPlayerClient({ selectedSong }: { selectedSong?: Son
   }, [selectedSong, songs]);
 
   useEffect(() => {
-    if (playing && audioRef.current) {
+    if (playing && audioRef.current && isReady) {
       audioRef.current.play();
     } else if (!playing && audioRef.current) {
       audioRef.current.pause();
     }
-  }, [playing, current]);
+  }, [playing, current, isReady]);
 
   const playSong = () => {
     setPlaying(true);
@@ -81,6 +82,8 @@ export default function AudioPlayerClient({ selectedSong }: { selectedSong?: Son
         onEnded={nextSong}
         preload="auto"
         style={{ display: "none" }}
+        onLoadedMetadata={() => setIsReady(true)}
+        onError={() => setIsReady(false)}
       />
       <div className="text-center mb-4">
         <div className="text-xl font-bold text-green-400 drop-shadow-lg">{currentSong.title}</div>
@@ -92,6 +95,7 @@ export default function AudioPlayerClient({ selectedSong }: { selectedSong?: Son
         <button
           className="bg-green-500/90 hover:bg-green-600/90 p-7 rounded-full text-4xl text-white shadow-xl flex items-center justify-center transition-all duration-150 border-2 border-green-300"
           onClick={playing ? pauseSong : playSong}
+          disabled={!isReady}
         >
           {playing ? <FaPause /> : <FaPlay />}
         </button>
