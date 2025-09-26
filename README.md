@@ -51,7 +51,7 @@ ArvPlay began as a hands-on project to learn Next.js and modern web development.
 
 - [x] Home page with functional player
 - [x] Song list with play/pause/seek
-- [ ] Library page (recently played)
+- [x] Library page (recently played)
 - [ ] Playlist creation and management
 - [ ] Search functionality
 - [ ] User authentication (NextAuth.js)
