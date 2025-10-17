@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaPlay, FaPlus, FaEdit, FaTrash, FaMusic, FaSave, FaTimes, FaHeart, FaClock, FaEllipsisV } from "react-icons/fa";
 
 type Song = {
@@ -26,6 +26,9 @@ export default function PlaylistClient({ onPlay }: { onPlay?: (song: Song) => vo
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const [newPlaylistDescription, setNewPlaylistDescription] = useState("");
   const [editingPlaylist, setEditingPlaylist] = useState<Playlist | null>(null);
+  // Play All state
+  const [playAllIndex, setPlayAllIndex] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   // Color options for playlist covers
   const coverColors = [
@@ -330,7 +333,7 @@ export default function PlaylistClient({ onPlay }: { onPlay?: (song: Song) => vo
         </button>
         {selectedPlaylist.songs.length > 0 && (
           <button
-            onClick={() => onPlay && onPlay(selectedPlaylist.songs[0])}
+            onClick={() => setPlayAllIndex(0)}
             className="flex items-center gap-2 bg-green-500 hover:bg-green-600 px-6 py-2 rounded-lg text-white transition-colors"
           >
             <FaPlay />
@@ -375,6 +378,21 @@ export default function PlaylistClient({ onPlay }: { onPlay?: (song: Song) => vo
                   >
                     <FaTrash />
                   </button>
+                  {/* Hidden audio element for Play All */}
+                  {playAllIndex === index && (
+                    <audio
+                      ref={audioRef}
+                      src={song.file}
+                      autoPlay
+                      onEnded={() => {
+                        if (selectedPlaylist.songs[playAllIndex + 1]) {
+                          setPlayAllIndex(playAllIndex + 1);
+                        } else {
+                          setPlayAllIndex(null);
+                        }
+                      }}
+                    />
+                  )}
                 </div>
               ))}
             </div>
