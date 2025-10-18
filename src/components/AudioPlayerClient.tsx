@@ -43,6 +43,33 @@ export default function AudioPlayerClient({ selectedSong }: { selectedSong?: Son
     }
   }, [playing, current, isReady]);
 
+  // Emit global player state so other components (e.g., SongListClient) can reflect play/pause icon
+  useEffect(() => {
+    const songId = songs[current]?.id ?? null;
+    window.dispatchEvent(
+      new CustomEvent("arvplay:player-state", {
+        detail: { songId, playing },
+      })
+    );
+  }, [songs, current, playing]);
+
+  // Listen for global commands (play/pause/toggle from song list)
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { command, songId } = (e as CustomEvent).detail || {};
+      if (!command) return;
+      if (songId) {
+        const idx = songs.findIndex((s) => s.id === songId);
+        if (idx !== -1) setCurrent(idx);
+      }
+      if (command === "play") setPlaying(true);
+      if (command === "pause") setPlaying(false);
+      if (command === "toggle") setPlaying((p) => !p);
+    };
+    window.addEventListener("arvplay:command", handler as EventListener);
+    return () => window.removeEventListener("arvplay:command", handler as EventListener);
+  }, [songs]);
+
   const playSong = () => {
     setPlaying(true);
   };

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FaPlay } from "react-icons/fa";
+import { FaPlay, FaPause } from "react-icons/fa";
 
 type Song = {
   id: string;
@@ -10,11 +10,25 @@ type Song = {
 
 export default function SongListClient({ onPlay }: { onPlay?: (song: Song) => void }) {
   const [songs, setSongs] = useState<Song[]>([]);
+  const [currentSongId, setCurrentSongId] = useState<string | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("/api/songs")
       .then((res) => res.json())
       .then((data) => setSongs(data.songs || []));
+  }, []);
+
+  // Listen to global player state updates from AudioPlayerClient
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail as { songId?: string | null; playing?: boolean };
+      if (!detail) return;
+      setCurrentSongId(detail.songId ?? null);
+      setIsPlaying(!!detail.playing);
+    };
+    window.addEventListener("arvplay:player-state", handler as EventListener);
+    return () => window.removeEventListener("arvplay:player-state", handler as EventListener);
   }, []);
 
   return (
@@ -26,10 +40,22 @@ export default function SongListClient({ onPlay }: { onPlay?: (song: Song) => vo
             <span className="text-white truncate">{song.title}</span>
             <button
               className="bg-green-500 hover:bg-green-600 p-2 rounded-full text-white flex items-center justify-center ml-2"
-              onClick={() => onPlay && onPlay(song)}
+              onClick={() => {
+                if (currentSongId === song.id) {
+                  // Toggle play/pause for current song via global command
+                  window.dispatchEvent(
+                    new CustomEvent("arvplay:command", {
+                      detail: { command: isPlaying ? "pause" : "play", songId: song.id },
+                    })
+                  );
+                } else {
+                  // Start playing a different song
+                  onPlay && onPlay(song);
+                }
+              }}
               aria-label={`Play ${song.title}`}
             >
-              <FaPlay />
+              {currentSongId === song.id && isPlaying ? <FaPause /> : <FaPlay />}
             </button>
           </li>
         ))}
